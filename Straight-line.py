@@ -1,4 +1,3 @@
-python
 from sr.robot import *
 import time
 
