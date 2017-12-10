@@ -11,10 +11,15 @@ m1_const = 1
 gyro_pin = 1
 gyro_const = 0.1
 
+def motor_reset():                                          #allows the programer to rest the varibles
+    global m0_const, m1_const
+    m0_const = 0.905 #Previous value 0.88
+    m1_const = 1 
 
 def goto_power(robot, target):
     global last_speed, m0_const, m1_const, gyro_pin, gyro_const #Uses these globals
-
+    
+    
     difference = target - last_speed                        #Gets the difference
     step = (1 if difference > 0 else -1)                    #Set the polarity of the step
 
