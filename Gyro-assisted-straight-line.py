@@ -17,13 +17,12 @@ def motor_reset():                                          #allows the programe
     m1_const = 1 
 
 def goto_power(robot, target):
-    global last_speed, m0_const, m1_const, gyro_pin, gyro_const #Uses these globals
+    global last_speed, m0_const, m1_const, gyro_pin, gyro_const, gyro_zero #Uses these globals
     
     
     difference = target - last_speed                        #Gets the difference
     step = (1 if difference > 0 else -1)                    #Set the polarity of the step
 
-    gyro_zero = robot.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
 
     for i in range(last_speed, target, step):
 
@@ -45,11 +44,9 @@ def goto_power(robot, target):
         
 
 def stay_at_power(robot, ticks):
-    global m0_const, m1_const, gyro_pin, gyro_const         #Uses these globals
+    global m0_const, m1_const, gyro_pin, gyro_const, gyro_zero#Uses these globals
 
     start_time = time.time()                                #Get UNIX-time
-    gyro_zero = robot.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
-    print("Gyro_zeroed at: ", gyro_zero)
     
     while (time.time() - start_time) < ticks:               #Has more time passed than specified run time?
         gyro_pos = robot.gpio.analogue_read(gyro_pin)       #Get current gyro position
@@ -68,6 +65,9 @@ def stay_at_power(robot, ticks):
         
 
 R = Robot()
+
+gyro_zero = robot.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
+print("Gyro_zeroed at: ", gyro_zero)
 
 R.motors[0].led.colour = (255, 0, 0)
 goto_power(R, 70)                       #Accelerate
