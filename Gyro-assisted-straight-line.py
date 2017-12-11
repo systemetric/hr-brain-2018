@@ -63,7 +63,7 @@ def stay_at_power(robot, ticks):
         robot.motors[0].m0.power = m0_const                 #Set the motors to the calculated power.
         robot.motors[0].m1.power = m1_const
         
-        print("Gyro pos: ", gyro_pos, "m0_const: ", m0_const, "m1_const: ", m1_const) #DEBUGGING
+        print("Gyro pos: ", gyro_pos, "  m0_const: ", m0_const, "  m1_const: ", m1_const) #DEBUGGING
         time.sleep(0.05)
         
 
