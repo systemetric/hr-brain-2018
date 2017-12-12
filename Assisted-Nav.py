@@ -5,18 +5,23 @@ import time
 
 from sr.robot import *
 
+#Control Varibles
+robot_mode_switch = 1    # When set to 0 , uses manual mode, when set to 1, uses vision
+gyro_pin = 1
+gyro_const = 0.1
+
+
 #VARIBLES
 last_speed = 0
 m0_const = 0.905 #Previous value 0.88
 m1_const = 1
-gyro_pin = 1
-gyro_const = 0.1
+
 
 def motor_reset():                                          #allows the programer to rest the varibles
     global m0_const, m1_const
     m0_const = 0.905 #Previous value 0.88
-    m1_const = 1
-
+    m1_const = 1   
+    
 def goto_power(robot, target):
     global last_speed, m0_const, m1_const, gyro_pin, gyro_const, gyro_zero #Uses these globals
 
@@ -117,8 +122,6 @@ R = Robot()
 
 gyro_zero = robot.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
 print("Gyro_zeroed at: ", gyro_zero)
-
-robot_mode_switch = 1    # When set to 0 , uses manual mode, when set to 1, uses vision
 
 if robot_mode_switch == 0:# Manual mode
     R.motors[0].led.colour = (189, 0, 255) # Purple to indicate manual mode
