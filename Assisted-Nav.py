@@ -92,21 +92,21 @@ def goto_marker():
         if current_marker_distance > 60: # If marker is more than 60cm away
 
             goto_power(robot,55)#Robot travels at fast speed
-            stay_at_power(robot,55)
+            stay_at_power(robot,3)
             R.motors[0].led.colour = (0, 255, 0)# Green to indicate speed
 
 
         elif current_marker_distance <= 60 and current_marker_distance >= 30: #If marker is less than 60cm but more than 30cm
 
             goto_power(robot,39)#Robot travels at a slower speed
-            stay_at_power(robot,39)
+            stay_at_power(robot,2)
             R.motors[0].led.colour = (219, 199, 65)# Yellow to indicate slowing down
 
 
         elif current_marker_distance < 30 and current_marker_distance > 15:
 
             goto_power(robot,30)# If marker is less than 30 and more than 15,travel EVEN slower
-            stay_at_power(robot,30)
+            stay_at_power(robot,1)
             R.motors[0].led.colour = (255, 6, 230)# Pink to indicate slow slow speed
 
 
