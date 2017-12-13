@@ -115,7 +115,7 @@ def goto_marker():
 
 R = Robot()
 
-gyro_zero = robot.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
+gyro_zero = R.gpio.analogue_read(gyro_pin)          #Get the zero motion voltage of the gyro
 print("Gyro_zeroed at: ", gyro_zero)
 
 robot_mode_switch = 1    # When set to 0 , uses manual mode, when set to 1, uses vision
