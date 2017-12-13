@@ -1,3 +1,4 @@
+
 # encoding: utf-8
 from __future__ import print_function  # Import the future
 
@@ -11,6 +12,7 @@ m0_const = 0.905 #Previous value 0.88
 m1_const = 1
 gyro_pin = 1
 gyro_const = 0.1
+gyro_pin = 1
 
 def motor_reset():                                          #allows the programer to rest the varibles
     global m0_const, m1_const
