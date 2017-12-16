@@ -9,7 +9,7 @@ m0_const = 0 #0.905 #Previous value 0.88
 m1_const = 0 #1
 gyro_const = 0.02
 gyro_pin = 1
-
+gyro_samples = 16
 
 def clamp(n, smallest, largest): 
     if n > largest:
@@ -68,11 +68,14 @@ def stay_at_power(robot, ticks):
 R = Robot()
 R.gpio.pin_mode(gyro_pin, INPUT_ANALOG)
 
+R.motors[0].led.colour = (0, 0, 255)
 reading = 0
-for i in range(16):
+
+for i in range(gyro_samples):                                 #Collect some samples about the gyro's zero position
     reading += R.gpio.analog_read(gyro_pin)
-    time.sleep(0.06)
-gyro_zero = reading/16
+    time.sleep(0.06)                                #The ADC on the PIC is slow. We need to take alot of samples but we are only going to get duplicate values
+
+    gyro_zero = reading/gyro_samples                                       
 print("Gyro_zeroed at: ", gyro_zero)
 
 R.motors[0].led.colour = (255, 0, 0)
@@ -107,9 +110,6 @@ stay_at_power(R, 10)                     #Moving constant speed waiting for 10 s
 
 R.motors[0].m0.power = 0            #Set power of motors
 R.motors[0].m1.power = 0
-
-#R.motors[0].led.colour = (255, 0, 0)
-#goto_power(R, 0)                        #Decelerate
 
 R.motors[0].led.colour = (255, 255, 255)
 
