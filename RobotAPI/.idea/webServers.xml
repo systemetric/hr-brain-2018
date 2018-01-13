@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="95b32b7b-d49a-437c-9b2e-7fc0686a0e19" name="RPI" url="http://10.0.16.53">
+        <fileTransfer host="10.0.16.53" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="988b5079-3d5e-40eb-adff-4731888459f3" name="RPI2" url="http://10.0.28.57">
+        <fileTransfer host="10.0.28.57" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
