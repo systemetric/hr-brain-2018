@@ -4,7 +4,7 @@ from sr.robot import *
 import time
 import os
 
-PICTURES = 250
+PICTURES = 10
 BUTTON_GPIO_PIN = 4
 STATIC_PATH = "/root/shepherd/shepherd/static/"
 CSV_PATH = STATIC_PATH + "csv/"
@@ -32,6 +32,8 @@ def get_distances(res, dist):
     print "Getting distances for " + str(dist) + "cm at " + str(res[0]) + "x" + str(res[1]) + "..."
 
     R.see(res=res, save=True)
+    print "Waiting 10s..."
+    time.sleep(10)
     for i in range(PICTURES):
         markers = R.see(res=res, save=False)
         if len(markers) == 0:
@@ -63,7 +65,7 @@ def ensure_dir(file_path):
 
 
 def write_distances_to_csv(distances, res, dist):
-    file_name = "new-" + str(dist) + "cm-" + str(res[0]) + "x" + str(res[1]) + ".csv"
+    file_name = "high-" + str(dist) + "cm-" + str(res[0]) + "x" + str(res[1]) + ".csv"
     url = "http://robot.sr/static/csv/" + file_name
     file_path = CSV_PATH + file_name
     ensure_dir(file_path)
@@ -80,16 +82,17 @@ def write_distances_to_csv(distances, res, dist):
 
 
 RESOLUTIONS = [
+    (640, 480),
     (1296, 736),
     (1296, 976),
     (1920, 1088),
     (1920, 1440)
 ]
 
-offset = 0
+offset = 3
 
 for dist_index in range(6 - offset):
-    d = (dist_index + 1 + offset) * 50
+    d = (dist_index + 1 + offset) * 5
     print "Waiting for button press for " + str(d) + "cm..."
     wait_for_button()
 
