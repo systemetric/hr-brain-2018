@@ -14,7 +14,7 @@ try:
         # v = 1
 
         R.motors[0].m0.power = v * MAX_VALUE
-        R.motors[0].m1.power = -v * MAX_VALUE
+        R.motors[0].m1.power = -0.91 * v * MAX_VALUE
 
         if math.floor(i) % 10 == 0:
             # print i

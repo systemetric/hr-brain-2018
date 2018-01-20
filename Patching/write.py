@@ -8,3 +8,5 @@ Lg=='''
 
 with open("new-update.zip", "w") as f:
 	f.write(base64.decodestring(data))
+
+
