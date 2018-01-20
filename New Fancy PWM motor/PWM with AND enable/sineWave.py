@@ -1,5 +1,6 @@
 from sr.robot import *
 import time
+import math
 
 R = Robot()
 
@@ -14,8 +15,8 @@ time.sleep(1)
 print "waited complete"
 
 while True:
-	for i in range(0, 180):
-		j = int(math.sin(math.radians(i*2))*100) # multiply sin result -1 to 1 up to
+	for i in range(0, 180, 2):
+		j = int(math.sin(math.radians(i))*100) # multiply sin result -1 to 1 up to
         R.servos[1] = -j                         # -100 to 100, then round towards 0
         R.servos[2] = j	
         time.sleep(0.02)
