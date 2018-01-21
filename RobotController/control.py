@@ -5,8 +5,11 @@ from urllib2 import urlopen
 import random
 import threading
 import json
+import gamepad
 
-host = "robot.sr"
+random.seed()
+
+host = "127.0.0.1"  # robot.sr
 port = 4096
 s = socket.socket()
 
@@ -17,7 +20,6 @@ while True:
     except socket.error, msg:
         print "Socket Error: " + msg[1]
         host = raw_input("Enter IP of control server: ")
-
 
 win = Window("Remote Control", 640, 480, 30, (255, 255, 255), False, True)
 
@@ -35,11 +37,23 @@ arrow_selected_left = pygame.transform.rotate(arrow_selected_up, 90)
 updating_image = False
 
 
+def rand_colour():
+    """Return random 6-bit hex code string.
+    :rtype: str
+    """
+    colour = ''
+    for i in range(0, 3):
+        colour += ("%02X" % random.randint(0, 255))
+    return colour
+
+
 def update_image():
+    """Get image from piCam (or placeholder) and update image global accordingly"""
+    # TODO: Get feed as video stream instead of image sequence
     global updating_image
     global image
 
-    image_str = urlopen("http://robot.sr/static/image.jpg").read()
+    image_str = urlopen("http://via.placeholder.com/640x480/" + rand_colour()).read()  # http://robot.sr/static/image.jpg
     image_file = io.BytesIO(image_str)
     image = pygame.image.load(image_file)
 

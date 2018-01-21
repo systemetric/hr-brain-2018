@@ -103,6 +103,7 @@ class Window(object):
     widgets = []
 
     def __init__(self, title="", w=800, h=600, fps=30, bg=(255, 255, 255), fullscreen=False, allow_esc_exit=False):
+        # type: (object, object, object, object, object, object, object) -> object
         self.title = title
         self.w = w
         self.h = h

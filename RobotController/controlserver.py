@@ -2,7 +2,7 @@ import socket
 import json
 import threading
 import time
-from sr.robot import Robot
+# from sr.robot import Robot  # Comment out for local testing
 
 ACCELERATION = 8
 DECAY = 2
@@ -24,7 +24,7 @@ acceleration_right = 0
 power_left = 0
 power_right = 0
 
-R = Robot()
+# R = Robot() # Comment out for local testing
 
 
 def control_motor():
@@ -69,8 +69,8 @@ def control_motor():
 
         print "L:", power_left, "R:", power_right
 
-        R.motors[0].m0.power = 0.95 * power_left
-        R.motors[0].m1.power = -1.05 * power_right
+        # R.motors[0].m0.power = 0.95 * power_left  # Comment out for local testing
+        # R.motors[0].m1.power = -1.05 * power_right
 
         time.sleep(0.5)
 
@@ -79,13 +79,13 @@ motor_control_thread = threading.Thread(target=control_motor)
 motor_control_thread.start()
 
 
-def see_repeat():
-    while True:
-        R.see(res=(640, 480), save=True)
-
-
-see_thread = threading.Thread(target=see_repeat)
-see_thread.start()
+# def see_repeat():  # Comment out for local testing
+#     while True:
+#         R.see(res=(640, 480), save=True)
+#
+#
+# see_thread = threading.Thread(target=see_repeat)
+# see_thread.start()
 
 while True:
     print "Listening for connection..."
@@ -127,7 +127,7 @@ while True:
             print "Socket Error: " + msg[1]
             break
 
-    motor_power[0] = 0
-    motor_power[1] = 0
+    # motor_power[0] = 0  # Comment out for local testing
+    # motor_power[1] = 0
 
     conn.close()
