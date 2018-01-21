@@ -5,7 +5,6 @@ from urllib2 import urlopen
 import random
 import threading
 import json
-import gamepad
 
 random.seed()
 

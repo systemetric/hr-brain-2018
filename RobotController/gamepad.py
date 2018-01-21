@@ -44,6 +44,10 @@ def get():
         out[it] = j.get_button(i)
         it += 1
     return out
+    # Read input from the D-Pad - currently broken
+    # for i in range(0, j.get_hatsnum()):
+    #     out[it] = j.get_hat(i)
+    #     it += 1
 
 
 def test():
