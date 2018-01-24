@@ -38,13 +38,8 @@ def rand_colour():
 
 
 def update_image():
-    """Get image from piCam (or placeholder) and update image global accordingly"""
-    # TODO: Get feed as video stream instead of image sequence
-    global updating_image
     global image
-
-    image_str = urlopen("http://via.placeholder.com/640x480/" + rand_colour()).read()  # http://robot.sr/static/image.jpg
-    image_file = io.BytesIO(image_str)
+    global updating_image
     image = pygame.image.load(image_file)
 
     updating_image = False
@@ -68,6 +63,20 @@ def send_gamepad_input():
         "LThumbstick_Y": input_vals[gamepad.LTHUMBSTICK_Y],
         "RThumbstick_Y": input_vals[gamepad.RTHUMBSTICK_Y],
     }))
+
+
+def update_image():
+    """Get image from piCam (or placeholder) and update image global accordingly"""
+    # TODO: Get feed as video stream instead of image sequence
+    global updating_image
+    global image
+
+    image_str = urlopen("http://via.placeholder.com/640x480/" + rand_colour()).read()  # http://robot.sr/static/image.jpg
+    image_file = io.BytesIO(image_str)
+
+    image = pygame.image.load(image_file)
+
+    updating_image = False
 
 
 def render(display):
