@@ -75,29 +75,29 @@ for i in range(gyro_samples):                                 #Collect some samp
     reading += R.gpio.analog_read(gyro_pin)
     time.sleep(0.06)                                #The ADC on the PIC is slow. We need to take alot of samples but we are only going to get duplicate values
 
-    gyro_zero = reading/gyro_samples                                       
+gyro_zero = reading/gyro_samples
 print("Gyro_zeroed at: ", gyro_zero)
 
 R.motors[0].led.colour = (255, 0, 0)
-#goto_power(R, 35)                       #Accelerate
+goto_power(R, 35)                       #Accelerate
 
-# m0_const = 28.40
-# m1_const = 31.59  #Numbers taken from 50% power * 0.905 offset
+m0_const = 28.40
+m1_const = 31.59  #Numbers taken from 50% power * 0.905 offset
 
-# R.motors[0].m0.power = m0_const            #Set power of motors
-# R.motors[0].m1.power = -m1_const
+R.motors[0].m0.power = m0_const            #Set power of motors
+R.motors[0].m1.power = -m1_const
 
-# R.motors[0].led.colour = (0, 255, 0)
-# stay_at_power(R, 1)                     #Moving constant speed waiting for 10 secs
+R.motors[0].led.colour = (0, 255, 0)
+stay_at_power(R, 1)                     #Moving constant speed waiting for 10 secs
 
-# m0_const = 40 * 0.95
-# m1_const = 40 * 1.05  #Numbers taken from 50% power * 0.905 offset
+m0_const = 40 * 0.95
+m1_const = 40 * 1.05  #Numbers taken from 50% power * 0.905 offset
 
-# R.motors[0].m0.power = m0_const            #Set power of motors
-# R.motors[0].m1.power = -m1_const
+R.motors[0].m0.power = m0_const            #Set power of motors
+R.motors[0].m1.power = -m1_const
 
-# R.motors[0].led.colour = (0, 255, 0)
-# stay_at_power(R, 1)                     #Moving constant speed waiting for 10 secs
+R.motors[0].led.colour = (0, 255, 0)
+stay_at_power(R, 1)                     #Moving constant speed waiting for 10 secs
 
 m0_const = 70 * 0.95
 m1_const = 70 * 1.05 #Numbers taken from 50% power * 0.905 offset
