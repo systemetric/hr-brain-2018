@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9da3f4a-9f35-48a8-8b68-42f04dd2e17b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/s.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RobotAPI/cube-sight.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RobotAPI/fov.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RobotAPI/mock/sr/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RobotAPI/mock/sr/robot.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RobotAPI/mock/test.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/m.py" afterPath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/m.py" />
-      <change beforePath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/sr/robot.py" afterPath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/sr/robot.py" />
-      <change beforePath="$PROJECT_DIR$/RobotAPI/sr/robot.py" afterPath="$PROJECT_DIR$/RobotAPI/sr/robot.py" />
+      <change beforePath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/s.py" afterPath="$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/s.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,8 +42,8 @@
       <file leaf-file-name="m.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/m.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state relative-caret-position="275">
+              <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -63,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/s.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+              <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -273,6 +265,14 @@
       <option name="presentableId" value="Default" />
       <updated>1517050259886</updated>
     </task>
+    <task id="LOCAL-00001" summary="N">
+      <created>1518274780453</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1518274780455</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -315,6 +315,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="N" />
+    <option name="LAST_COMMIT_MESSAGE" value="N" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,8 +731,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/m.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        <state relative-caret-position="275">
+          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -738,7 +742,7 @@
     <entry file="file://$PROJECT_DIR$/New Fancy PWM motor/Cube Finding/s.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <caret line="35" column="46" lean-forward="false" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
