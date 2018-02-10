@@ -187,3 +187,6 @@ class Robot(object):
     def off(self):
         for motor in self.motors:
             motor.off()
+
+    def see(self, res, save):
+        pass
