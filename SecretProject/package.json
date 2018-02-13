@@ -1,0 +1,11 @@
+{
+  "name": "secretproject",
+  "version": "1.0.0",
+  "description": "A blockly app for programming the robot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrBBot",
+  "private": true
+}
