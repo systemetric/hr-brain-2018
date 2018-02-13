@@ -41,8 +41,8 @@ def turn(angle):
     multiplier = 1
     if angle < 0:
         multiplier = -1
-    R.servos[SERVO_LEFT] = MULTIPLIER_LEFT * -30 * multiplier
-    R.servos[SERVO_RIGHT] = MULTIPLIER_RIGHT * 30 * multiplier
+    R.servos[SERVO_LEFT] = MULTIPLIER_LEFT * 30 * multiplier
+    R.servos[SERVO_RIGHT] = MULTIPLIER_RIGHT * -30 * multiplier
 
     time.sleep(abs(angle) / SPEED_ANGULAR_30)
 
@@ -50,13 +50,17 @@ def turn(angle):
     R.servos[SERVO_LEFT] = 0
 
 
-def succ():
+def pickup_cube():
     R.servos[SERVO_ARM] = -100
     time.sleep(1)
     R.gpio.digital_write(GPIO_PUMP, True)
     time.sleep(1)
     R.servos[SERVO_ARM] = 100
     time.sleep(0.5)
+
+
+def succ():
+    pickup_cube()
 
 
 def pump_on():
@@ -70,14 +74,16 @@ def drop():
 def find_cube():
     global markers
     at_cube = False
+    correct_marker_type = False
     while not at_cube:
         markers = R.see(res=(640, 480), save=True)
         for marker in markers:
             if marker.info.marker_type == MARKER_TOKEN:
                 print('Cube ' + str(marker.info.code) + 'located')
-        if len(markers) == 0:
+                correct_marker_type = True
+        if len(markers) == 0 or not correct_marker_type:
             print('No cube found, rotating...')
-            turn(30)
+            turn(45)
             time.sleep(0.3)
         else:
             print('Heading to cube ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
@@ -91,15 +97,17 @@ def find_cube():
 def find_bucket():
     global markers
     at_bucket = False
+    correct_marker_type = False
     while not at_bucket:
         markers = R.see(res=(640, 480), save=True)
         for marker in markers:
             if (marker.info.marker_type == MARKER_BUCKET_SIDE) or (marker.info.marker_type == MARKER_BUCKET_END):
                 print('Bucket ' + str(marker.info.code) + 'located')
+                correct_marker_type = True
                 # TODO: dump the cube in the *right* bucket
-        if len(markers) == 0:
+        if len(markers) == 0 or not correct_marker_type:
             print('No bucket found, rotating...')
-            turn(30)
+            turn(45)
             time.sleep(0.3)
         else:
             print('Heading to bucket ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
