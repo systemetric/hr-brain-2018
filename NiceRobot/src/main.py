@@ -1,3 +1,5 @@
 from nicerobot import *
 
-move(2)
+for i in range(0, 4):
+    move(2)
+    turn(90)

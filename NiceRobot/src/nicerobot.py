@@ -12,13 +12,14 @@ GPIO_GATE = 1
 GPIO_PUMP = 2
 
 MULTIPLIER_LEFT = -1
-MULTIPLIER_RIGHT = 0.91
+MULTIPLIER_RIGHT = 0.95  # 0.91
 
 SPEED_50 = 1.25 / 3
 SPEED_100 = 1.7 * SPEED_50 * 1.25
 SPEED_ANGULAR_30 = 360 / 4.25
 
 R.gpio.pin_mode(GPIO_GATE, OUTPUT)
+R.gpio.pin_mode(GPIO_PUMP, OUTPUT)
 R.gpio.digital_write(GPIO_GATE, True)
 R.servos[SERVO_RIGHT] = 0
 R.servos[SERVO_LEFT] = 0
@@ -45,3 +46,20 @@ def turn(angle):
 
     R.servos[SERVO_RIGHT] = 0
     R.servos[SERVO_LEFT] = 0
+
+
+def succ():
+    R.servos[SERVO_ARM] = -100
+    time.sleep(1)
+    R.gpio.digital_write(GPIO_PUMP, True)
+    time.sleep(1)
+    R.servos[SERVO_ARM] = 100
+    time.sleep(0.5)
+
+
+def pump_on():
+    R.gpio.digital_write(GPIO_PUMP, True)
+
+
+def drop():
+    R.gpio.digital_write(GPIO_PUMP, False)
