@@ -85,21 +85,26 @@ def find_cube():
             move(markers[0].dist)
             at_cube = True
 
+        time.sleep(0.5)
+
 
 def find_bucket():
     global markers
-    at_cube = False
-    while not at_cube:
+    at_bucket = False
+    while not at_bucket:
         markers = R.see(res=(640, 480), save=True)
         for marker in markers:
-            if marker.info.marker_type == MARKER_BUCKET_SIDE:
-                print('Cube ' + str(marker.info.code) + 'located')
+            if (marker.info.marker_type == MARKER_BUCKET_SIDE) or (marker.info.marker_type == MARKER_BUCKET_END):
+                print('Bucket ' + str(marker.info.code) + 'located')
+                # TODO: dump the cube in the *right* bucket
         if len(markers) == 0:
-            print('No cube found, rotating...')
+            print('No bucket found, rotating...')
             turn(30)
             time.sleep(0.3)
         else:
-            print('Heading to cube ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
+            print('Heading to bucket ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
             turn(markers[0].rot_y)
             move(markers[0].dist)
-            at_cube = True
+            at_bucket = True
+
+        time.sleep(0.5)
