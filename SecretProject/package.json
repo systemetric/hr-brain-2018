@@ -1,11 +1,19 @@
 {
-  "name": "secretproject",
+  "name": "secret-project",
   "version": "1.0.0",
   "description": "A blockly app for programming the robot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "MrBBot",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "archiver": "^2.1.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.12",
+    "request": "^2.83.0"
+  }
 }
