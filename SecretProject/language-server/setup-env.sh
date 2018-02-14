@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 mkdir env
 cd env
 echo Setting up virtual environment...
