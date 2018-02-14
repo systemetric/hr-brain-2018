@@ -1,7 +1,5 @@
 from nicerobot import *
 import time
 
-find_cube()
-pickup_cube()
-find_bucket()
-drop()
+for count in range(10):
+  pass

@@ -1,11 +1,12 @@
 {
-  "name": "secret-project",
+  "name": "nice-robot-server",
   "version": "1.0.0",
-  "description": "A blockly app for programming the robot",
-  "main": "index.js",
+  "description": "Server for nicely programming the robot",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "setup": "cd language-server && setup-env",
+    "start": "node server.js",
+    "dev": "concurrently --prefix \"name\" --names \"Node,Gulp,Webpack\" --prefix-colors \"green,red,blue\" \"nodemon server.js\" \"gulp sass sass:watch\" \"webpack\""
   },
   "author": "MrBBot",
   "private": true,
@@ -13,7 +14,25 @@
     "archiver": "^2.1.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "monaco-editor": "^0.10.1",
+    "monaco-languageclient": "^0.4.0",
+    "reconnecting-websocket": "^3.2.2",
+    "request": "^2.83.0",
+    "vscode-languageserver": "^3.5.0",
+    "vscode-ws-jsonrpc": "0.0.1-alpha.5",
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^2.1.0",
+    "@types/body-parser": "^1.16.8",
+    "@types/express": "^4.11.1",
+    "@types/request": "^2.47.0",
+    "@types/ws": "^4.0.1",
+    "concurrently": "^3.5.1",
+    "copy-webpack-plugin": "^4.4.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
     "nodemon": "^1.14.12",
-    "request": "^2.83.0"
+    "webpack": "^3.11.0"
   }
 }
