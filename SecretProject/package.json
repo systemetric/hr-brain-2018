@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "setup": "cd language-server && setup-env",
+    "build": "webpack",
     "start": "node server.js",
-    "dev": "concurrently --prefix \"name\" --names \"Node,Gulp,Webpack\" --prefix-colors \"green,red,blue\" \"nodemon server.js\" \"gulp sass sass:watch\" \"webpack\""
+    "dev": "concurrently --prefix \"name\" --names \"Node,Webpack\" --prefix-colors \"green,blue\" \"nodemon server.js\" \"webpack --watch\""
   },
   "author": "MrBBot",
   "private": true,
@@ -30,9 +31,11 @@
     "@types/ws": "^4.0.1",
     "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.4.1",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.14.12",
+    "sass-loader": "^6.0.6",
     "webpack": "^3.11.0"
   }
 }
