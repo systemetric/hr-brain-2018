@@ -26,6 +26,10 @@ R.gpio.digital_write(GPIO_GATE, True)
 R.servos[SERVO_RIGHT] = 0
 R.servos[SERVO_LEFT] = 0
 
+# Consts for find()
+BUCKET = 0
+CUBE = 1
+
 
 def move(distance):
     R.servos[SERVO_LEFT] = MULTIPLIER_LEFT * 50
@@ -71,48 +75,36 @@ def drop():
     R.gpio.digital_write(GPIO_PUMP, False)
 
 
-def find_cube():
+def find(thing):
     global markers
-    at_cube = False
+    at_thing = False
     correct_marker_type = False
-    while not at_cube:
+
+    if thing == BUCKET:
+        thing = 'bucket'
+        correct_marker_types = [MARKER_BUCKET_SIDE, MARKER_BUCKET_END]
+    elif thing == CUBE:
+        thing = 'cube'
+        correct_marker_types = [MARKER_TOKEN]
+    else:
+        print('{0} is not a valid thing, cannot find.'.format(thing))
+        return
+
+    while not at_thing:
         markers = R.see(res=(640, 480), save=True)
         for marker in markers:
-            if marker.info.marker_type == MARKER_TOKEN:
-                print('Cube ' + str(marker.info.code) + 'located')
-                correct_marker_type = True
-        if len(markers) == 0 or not correct_marker_type:
-            print('No cube found, rotating...')
-            turn(45)
-            time.sleep(0.3)
-        else:
-            print('Heading to cube ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
-            turn(markers[0].rot_y)
-            move(markers[0].dist)
-            at_cube = True
-
-        time.sleep(0.5)
-
-
-def find_bucket():
-    global markers
-    at_bucket = False
-    correct_marker_type = False
-    while not at_bucket:
-        markers = R.see(res=(640, 480), save=True)
-        for marker in markers:
-            if (marker.info.marker_type == MARKER_BUCKET_SIDE) or (marker.info.marker_type == MARKER_BUCKET_END):
-                print('Bucket ' + str(marker.info.code) + 'located')
+            if marker.info.marker_type in correct_marker_types:
+                print('{0} {1} located'.format(thing, str(marker.info.code)))
                 correct_marker_type = True
                 # TODO: dump the cube in the *right* bucket
         if len(markers) == 0 or not correct_marker_type:
-            print('No bucket found, rotating...')
+            print('No {0} found, rotating...'.format(thing))
             turn(45)
             time.sleep(0.3)
         else:
-            print('Heading to bucket ' + str(markers[0].info.code) + ' at angle ' + str(markers[0].rot_y))
+            print('Heading to {0} {1} at angle {2}'.format(thing, str(markers[0].info.code), str(markers[0].rot_y))
             turn(markers[0].rot_y)
             move(markers[0].dist)
-            at_bucket = True
+            at_thing = True
 
         time.sleep(0.5)
