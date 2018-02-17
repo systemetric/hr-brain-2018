@@ -86,6 +86,10 @@ window.amdRequire(['vs/editor/editor.main'], () => {
     });
 });
 
-window.getMonacoCode = function() {
+window.saveMonaco = window.getMonacoCode = function() {
     return monacoEditor.getValue();
+};
+
+window.loadMonaco = function(text) {
+    monacoEditor.setValue(text);
 };

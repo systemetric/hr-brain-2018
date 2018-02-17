@@ -30,6 +30,16 @@ function getBlocklyCode(header='from nicerobot import *\nimport time\n\n') {
     return header + Blockly.Python.workspaceToCode(blocklyWorkspace);
 }
 
+function saveBlockly() {
+    let xml = Blockly.Xml.workspaceToDom(blocklyWorkspace);
+    return Blockly.Xml.domToText(xml);
+}
+
+function loadBlockly(text) {
+    let xml = Blockly.Xml.textToDom(text);
+    Blockly.Xml.domToWorkspace(xml, blocklyWorkspace);
+}
+
 blocklyWorkspace.addChangeListener(function() {
     blocklyCodeArea.innerHTML = getBlocklyCode('');
     Prism.highlightElement(blocklyCodeArea, true);
